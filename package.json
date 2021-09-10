@@ -1,8 +1,8 @@
 {
-  "name": "@scope/plugin-name",
-  "version": "1.0.0",
-  "description": "Description of plugin",
-  "homepage": "",
+  "name": "eleventy-plugin-torchlight",
+  "version": "0.1.0",
+  "description": "This plugin runs your HTML files through Torchlight.dev for syntax highlighting",
+  "homepage": "https://github.com/timkley/eleventy-plugin-torchlight",
   "main": ".eleventy.js",
   "scripts": {
     "start": "eleventy --serve",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/username/repo-name.git"
+    "url": "git+https://github.com/timkley/eleventy-plugin-torchlight.git"
   },
   "keywords": [
     "11ty",
@@ -20,14 +20,17 @@
     "eleventy-plugin"
   ],
   "author": {
-    "name": "username",
-    "url": "https://website.com"
+    "name": "Tim Kleyersburg",
+    "url": "https://www.tim-kleyersburg.de"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/username/repo-name/issues"
+    "url": "https://github.com/timkley/eleventy-plugin-torchlight/issues"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1"
+  },
+  "dependencies": {
+    "@torchlight-api/torchlight-cli": "^0.1.2"
   }
 }

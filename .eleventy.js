@@ -1,20 +1,19 @@
-// Example use for the demo plugin:
-// {{ 'Steph' | hello | safe }}
+const {makeConfig, makeCache} = require('@torchlight-api/torchlight-cli/lib/config')
+const torchlight = require('@torchlight-api/torchlight-cli/lib/torchlight.js').default
+const highlight = require('@torchlight-api/torchlight-cli/lib/commands/highlight.js').default
 
 module.exports = (eleventyConfig, options) => {
-  // Define defaults for your plugin config
-  const defaults = {
-    htmlTag: "h2",
-  };
+    eleventyConfig.on('afterBuild', () => {
+        const config = makeConfig('')
 
-  // You can create more than filters as a plugin, but here's an example
-  eleventyConfig.addFilter("hello", (name) => {
-    // Combine defaults with user defined options
-    const { htmlTag } = {
-      ...defaults,
-      ...options,
-    };
+        if (!config.length) {
+            config.token = process.env.TORCHLIGHT_TOKEN
+            config.highlight.input = '_site'
+        }
 
-    return `<${htmlTag}>Hello, ${name}!</${htmlTag}>`;
-  });
-};
+        const cache = makeCache(config)
+
+        torchlight.init(config, cache)
+        highlight(torchlight)
+    })
+}

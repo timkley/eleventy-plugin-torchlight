@@ -1,73 +1,62 @@
-## Eleventy Plugin Template
+# eleventy-plugin-torchlight
 
-> A starter environment for creating plugins for Eleventy (11ty).
+This is a plugin for the static site generator [Eleventy](https://11ty.dev) to syntax highlight your code blocks with [torchlight.dev](https://torchlight.dev).
 
-Fork this repo, or select "Use this template" to get started.
+## Prerequisites
 
-### Using this template
+To use this plugin you need to be registered on [torchlight.dev](https://torchlight.dev) and have obtained an API key.
 
-This template is setup to run a single page 11ty site for testing your plugin functionality. The build files are excluded from the final plugin package via `.npmignore`.
-
-Your plugin functionality should live in/be exported from `.eleventy.js`. You will find a sample of creating a filter plugin in this template, including setting up a default config and merging user options.
-
-**Be sure to update the `package.json` with your own details!**
-
-### Testing your plugin
-
-You can test your functionality within this project's local 11ty build by running `npm start`, but you'll also want to test it _as a plugin_.
-
-From another local 11ty project, you can set the `require()` path relatively to your plugin's project directory, and then use it just as you would for a plugin coming from a package.
-
-Example, assuming you place all your repositories within the same parent directory:
-
-```js
-const pluginName = require("../plugin-directory");
-
-module.exports = (eleventyConfig) => {
-  eleventyConfig.addPlugin(pluginName, { optionName: 'if needed' );
-};
-```
-
-Then, run the project to test the plugin's functionality.
-
-Note that making changes in the plugin source will likely require restarting the test project.
-
-### Resources for creating an 11ty plugin
-
-- Bryan Robinson's ["Create a Plugin with 11ty"](https://www.youtube.com/watch?v=aO-NFFKjnnE) demonstration on "Learn With Jason"
-
----
-
-**The following is a boilerplate for your final plugin README**.
-
-## Usage
-
-Describe how to install your plugin, such as:
+## Installation
 
 ```bash
-npm install @scope/plugin-name
+npm install eleventy-plugin-torchlight #or
+yarn add eleventy-plugin-torchlight
 ```
 
 Then, include it in your `.eleventy.js` config file:
 
 ```js
-const pluginName = require("@scope/plugin-name");
+const torchlight = require('eleventy-plugin-torchlight');
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.addPlugin(pluginName);
+  eleventyConfig.addPlugin(torchlight);
 };
 ```
 
-## Config Options
+## Configuration
 
-| Option      | Type | Default       |
-| ----------- | ---- | ------------- |
-| option name | type | default value |
+Run `npx torchlight init` to initialize a default torchlight config. If you don't create a config yourself this plugin assumes this defaults to match 11ty's
+defaults:
 
-## Config Examples
+```
+{
+    token: process.env.TORCHLIGHT_TOKEN,
+    highlight: {
+        input: '_site'
+    }
+}
+```
 
-Show examples of likely configurations.
+> If you create a new config remember to update the config to match the input path of Eleventy!
+
+To verify everything works you can run Eleventy like this to pass the token as environment variable:
+
+```
+`TORCHLIGHT_TOKEN=your_token npm run start`
+```
+
+Your code should now be highlighted.
+
+If you are for example using Netflify you can add the token via your site's settings so it's available during the build.
+
+### Cache
+
+Torchlight uses a cache to prevent highlighting code blocks that don't have changed.  
+By default it uses a [file based cache](https://torchlight.dev/docs/clients/cli#cache) which created a directory called `cache`.
+
+Make sure you add this folder to your `.eleventyignore` file so it doesn't trigger rebuilds after highlighting your output files.
 
 ## Credits
 
-Add credits if needed.
+Thanks to [@5t3ph](https://twitter.com/5t3ph) for her [eleventy-plugin-template](https://github.com/5t3ph/eleventy-plugin-template)
+and [Aaron Francis](https://twitter.com/aarondfrancis) for [Torchlight](https://torchlight.dev).
