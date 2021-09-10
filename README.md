@@ -42,7 +42,7 @@ defaults:
 To verify everything works you can run Eleventy like this to pass the token as environment variable:
 
 ```
-`TORCHLIGHT_TOKEN=your_token npm run start`
+TORCHLIGHT_TOKEN=your_token npm run start
 ```
 
 Your code should now be highlighted.
