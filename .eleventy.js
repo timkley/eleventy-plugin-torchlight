@@ -8,7 +8,9 @@ module.exports = (eleventyConfig, options) => {
 
         if (!config.length) {
             config.token = process.env.TORCHLIGHT_TOKEN
-            config.highlight.input = '_site'
+            config.highlight = {
+                input: '_site'
+            }
         }
 
         const cache = makeCache(config)
