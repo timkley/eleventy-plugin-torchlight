@@ -13,6 +13,11 @@ module.exports = (eleventyConfig, options) => {
             }
         }
 
+        if (!config.token) {
+            console.error('Missing Torchlight token. Please set the TORCHLIGHT_TOKEN environment variable. Skipping highlighting.')
+            return
+        }
+
         const cache = makeCache(config)
 
         torchlight.init(config, cache)
