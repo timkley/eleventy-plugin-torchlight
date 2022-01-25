@@ -6,7 +6,7 @@ module.exports = (eleventyConfig, options) => {
     eleventyConfig.on('afterBuild', () => {
         const config = makeConfig('')
 
-        if (!config.length) {
+        if (Object.keys(config).length === 0) {
             config.token = process.env.TORCHLIGHT_TOKEN
             config.highlight = {
                 input: '_site'
