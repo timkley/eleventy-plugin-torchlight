@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-torchlight",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "This plugin runs your HTML files through Torchlight.dev for syntax highlighting",
   "homepage": "https://github.com/timkley/eleventy-plugin-torchlight",
   "main": ".eleventy.js",
@@ -28,9 +28,9 @@
     "url": "https://github.com/timkley/eleventy-plugin-torchlight/issues"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.2"
+    "@11ty/eleventy": "^2.0.1"
   },
   "dependencies": {
-    "@torchlight-api/torchlight-cli": "0.1.2"
+    "@torchlight-api/torchlight-cli": "0.1.7"
   }
 }
