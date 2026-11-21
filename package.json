@@ -28,9 +28,12 @@
     "url": "https://github.com/timkley/eleventy-plugin-torchlight/issues"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^3.1.8"
   },
   "dependencies": {
     "@torchlight-api/torchlight-cli": "0.1.7"
+  },
+  "overrides": {
+    "axios": "0.35.0"
   }
 }
